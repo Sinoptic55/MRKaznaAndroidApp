@@ -25,6 +25,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
+import pro.umaks.mrkaznaandroidapp.Services.MRRestService;
+
 public class LoginPin extends AppCompatActivity {
 
     private static final String[] DUMMY_CREDENTIALS = new String[]{
@@ -197,7 +199,6 @@ public class LoginPin extends AppCompatActivity {
 
             if (loginResult.contains("OK"))
             {
-                saveLogin();
                 result = true;
             }
             return  result;
@@ -209,6 +210,9 @@ public class LoginPin extends AppCompatActivity {
             showProgress(false);
 
             if (success) {
+                saveLogin();
+                MRRestService parseTask = new MRRestService();
+                parseTask.execute(mLogin);
                 finish();
             } else {
                 mPinView.setError(getString(R.string.error_incorrect_password));
