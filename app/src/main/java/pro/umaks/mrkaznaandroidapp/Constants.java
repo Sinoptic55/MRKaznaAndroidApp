@@ -6,5 +6,5 @@ package pro.umaks.mrkaznaandroidapp;
 
 public class Constants
 {
-    public static final String SVC_PATH = "http://ws.mr-group.ru:46322/hts/hs/oldrequests/";
+    public static final String SVC_PATH = "http://ws.";
 }
