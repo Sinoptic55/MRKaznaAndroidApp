@@ -212,7 +212,7 @@ public class LoginPin extends AppCompatActivity {
             if (success) {
                 saveLogin();
                 MRRestService parseTask = new MRRestService();
-                parseTask.execute(mLogin);
+                parseTask.execute(mLogin, mPin);
                 finish();
             } else {
                 mPinView.setError(getString(R.string.error_incorrect_password));

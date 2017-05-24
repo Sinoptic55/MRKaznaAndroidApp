@@ -2,14 +2,13 @@ package pro.umaks.mrkaznaandroidapp.Services;
 
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -36,11 +35,19 @@ public class MRRestService extends AsyncTask<String, Void, String>
     protected String doInBackground(String... params)
     {
         String jsonString = GetRequestsJSON(params[0], params[1]);
+        JSONObject jObject = null;
+        JSONArray jRequestArray = null;
         try {
-            JSONObject jObject = new JSONObject(jsonString);
+            jObject = new JSONObject(jsonString);
+            jRequestArray = jObject.getJSONArray("RequestData");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         String result = "";
         return result;
     }
