@@ -1,6 +1,11 @@
 package pro.umaks.mrkaznaandroidapp.Services;
 
+import android.app.DownloadManager;
 import android.os.AsyncTask;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,11 +13,15 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import pro.umaks.mrkaznaandroidapp.Constants;
+import pro.umaks.mrkaznaandroidapp.models.RequestData;
+import pro.umaks.mrkaznaandroidapp.models.RequestModel;
 
 /**
  * Created by ivtla on 14.05.2017.
@@ -36,10 +45,10 @@ public class MRRestService extends AsyncTask<String, Void, String>
     {
         String jsonString = GetRequestsJSON(params[0], params[1]);
         JSONObject jObject = null;
-        JSONArray jRequestArray = null;
+        JSONObject jRequestArray = null;
         try {
             jObject = new JSONObject(jsonString);
-            jRequestArray = jObject.getJSONArray("RequestData");
+            jRequestArray = jObject.getJSONObject("RequestData");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -47,7 +56,8 @@ public class MRRestService extends AsyncTask<String, Void, String>
         {
             e.printStackTrace();
         }
-
+        RequestData rl;
+        rl = new Gson().fromJson(jRequestArray.toString(), RequestData.class);
         String result = "";
         return result;
     }
