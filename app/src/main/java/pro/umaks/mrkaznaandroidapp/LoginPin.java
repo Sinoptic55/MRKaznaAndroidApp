@@ -6,8 +6,8 @@ import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,20 +18,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import pro.umaks.mrkaznaandroidapp.Services.MRRestService;
+import pro.umaks.mrkaznaandroidapp.models.RequestModel;
 
 public class LoginPin extends AppCompatActivity {
 
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "sapr:0512", "bar@example.com:world"
-    };
 
     private UserLoginTask mAuthTask = null;
 
@@ -40,6 +37,7 @@ public class LoginPin extends AppCompatActivity {
     private EditText mPinView;
     private View mProgressView;
     private View mLoginFormView;
+    private ArrayList<RequestModel> mRequestList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
