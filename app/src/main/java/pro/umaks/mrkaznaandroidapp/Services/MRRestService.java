@@ -53,6 +53,7 @@ public class MRRestService extends AsyncTask<String, Void, ArrayList<RequestMode
         }
         RequestData rl;
         rl = new Gson().fromJson(jRequestArray.toString(), RequestData.class);
+
         return rl.Requests;
     }
     @Override
