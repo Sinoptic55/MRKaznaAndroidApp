@@ -19,7 +19,7 @@ public class RequestListViewModel extends ViewModel
         if (Requests == null)
         {
             MRRestService service = new MRRestService();
-            service.execute("", ""); //TODO login & Pin
+            service.execute("sapryshina", "1111"); //TODO login & Pin
             Requests = service.get();
         }
     }

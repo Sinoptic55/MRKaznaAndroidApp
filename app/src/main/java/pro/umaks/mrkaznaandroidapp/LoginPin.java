@@ -3,6 +3,7 @@ package pro.umaks.mrkaznaandroidapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -24,7 +25,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import pro.umaks.mrkaznaandroidapp.Services.MRRestService;
 import pro.umaks.mrkaznaandroidapp.models.RequestModel;
 
 public class LoginPin extends AppCompatActivity {
@@ -102,6 +102,17 @@ public class LoginPin extends AppCompatActivity {
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            try {
+                Boolean result = mAuthTask.get();
+                Intent intent;
+                intent = new Intent(this, RequestListActivity.class);
+                startActivity(intent);
+
+            }
+            catch (Exception e)
+            {
+
+            }
         }
     }
 
@@ -209,8 +220,8 @@ public class LoginPin extends AppCompatActivity {
 
             if (success) {
                 saveLogin();
-                MRRestService parseTask = new MRRestService();
-                parseTask.execute(mLogin, mPin);
+//                MRRestService parseTask = new MRRestService();
+//                parseTask.execute(mLogin, mPin);
                 finish();
             } else {
                 mPinView.setError(getString(R.string.error_incorrect_password));
