@@ -79,7 +79,7 @@ public class LoginPin extends AppCompatActivity {
         mPinView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mLoginView.getText().toString();
+        String login = mLoginView.getText().toString();
         String password = mPinView.getText().toString();
 
         boolean cancel = false;
@@ -100,13 +100,17 @@ public class LoginPin extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(login, password);
             mAuthTask.execute((Void) null);
             try {
                 Boolean result = mAuthTask.get();
-                Intent intent;
-                intent = new Intent(this, RequestListActivity.class);
-                startActivity(intent);
+                if (result) {
+                    Intent intent;
+                    intent = new Intent(this, RequestListActivity.class);
+                    intent.putExtra("login", login);
+                    intent.putExtra("pin", password);
+                    startActivity(intent);
+                }
 
             }
             catch (Exception e)

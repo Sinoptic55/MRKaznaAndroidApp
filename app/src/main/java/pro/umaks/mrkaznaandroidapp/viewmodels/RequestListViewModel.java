@@ -3,7 +3,6 @@ package pro.umaks.mrkaznaandroidapp.viewmodels;
 import android.arch.lifecycle.ViewModel;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 import pro.umaks.mrkaznaandroidapp.Services.MRRestService;
 import pro.umaks.mrkaznaandroidapp.models.RequestModel;
@@ -15,13 +14,18 @@ public class RequestListViewModel extends ViewModel
 {
     public ArrayList<RequestModel> Requests;
 
-    public RequestListViewModel() throws ExecutionException, InterruptedException {
-        if (Requests == null)
-        {
+    public RequestListViewModel() {
+    }
+
+    public void FillRequestsList(String login, String pin)
+    {
+        try {
             MRRestService service = new MRRestService();
-            service.execute("sapryshina", "1111"); //TODO login & Pin
+            service.execute(login, pin);
             Requests = service.get();
         }
+        catch (Exception e)
+        {}
     }
 
 }

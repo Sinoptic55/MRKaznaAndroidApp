@@ -1,6 +1,7 @@
 package pro.umaks.mrkaznaandroidapp;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -18,12 +19,24 @@ import pro.umaks.mrkaznaandroidapp.viewmodels.RequestListViewModel;
 public class RequestListActivity extends AppCompatActivity {
     private RequestListViewModel mRequestListViewModel;
     boolean mTwoPane = false;
+
+    private String mLogin;
+    private String mPin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_list);
 
+        Intent intent = getIntent();
+        mLogin = intent.getStringExtra("login");
+        mPin = intent.getStringExtra("pin");
+
        mRequestListViewModel =  ViewModelProviders.of(this).get(RequestListViewModel.class);
+       if (mRequestListViewModel.Requests == null)
+       {
+           mRequestListViewModel.FillRequestsList(mLogin, mPin);
+       }
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
