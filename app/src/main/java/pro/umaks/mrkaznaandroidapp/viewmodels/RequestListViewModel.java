@@ -13,6 +13,7 @@ import pro.umaks.mrkaznaandroidapp.models.RequestModel;
 public class RequestListViewModel extends ViewModel
 {
     public ArrayList<RequestModel> Requests;
+    public String Subtitle;
 
     public RequestListViewModel() {
     }
@@ -26,6 +27,7 @@ public class RequestListViewModel extends ViewModel
         }
         catch (Exception e)
         {}
+        Subtitle = "У меня на согласовании";
     }
 
 }

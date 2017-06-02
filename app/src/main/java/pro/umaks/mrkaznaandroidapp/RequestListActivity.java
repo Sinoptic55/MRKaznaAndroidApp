@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +39,10 @@ public class RequestListActivity extends AppCompatActivity {
            mRequestListViewModel.FillRequestsList(mLogin, mPin);
        }
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        toolbar.setTitle(getTitle());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getTitle());
+        toolbar.setSubtitle(mRequestListViewModel.Subtitle);
 
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
@@ -78,8 +80,10 @@ public class RequestListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).Number);
-            holder.mContentView.setText(mValues.get(position).Contragent);
+            holder.mCompanyView.setText(mValues.get(position).Organization);
+            holder.mContragentView.setText(mValues.get(position).Contragent);
+            holder.mContractView.setText(mValues.get(position).Contract);
+            holder.mOrganizationAccountView.setText(mValues.get(position).OrganizationAccount);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,20 +115,25 @@ public class RequestListActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
+            public final TextView mCompanyView;
+            public final TextView mOrganizationAccountView;
+            public final TextView mContragentView;
+            public final TextView mContractView;
             public RequestModel mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mCompanyView = (TextView) view.findViewById(R.id.company);
+                mContragentView = (TextView) view.findViewById(R.id.contragent);
+                mOrganizationAccountView = (TextView) view.findViewById(R.id.OrganizationAccount);
+                mContractView = (TextView) view.findViewById(R.id.contract);
+
             }
 
             @Override
             public String toString() {
-                return super.toString() + " '" + mContentView.getText() + "'";
+                return super.toString() + " '" + mCompanyView.getText() + "'";
             }
         }
     }
