@@ -1,99 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:padding="1dp"
-        android:rowCount="4">
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:labelFor="@+id/company"
-            android:text="Плательщик:"
-            android:textSize="10sp" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/company"
+        android:text="Плательщик:"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/company"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:paddingStart="5pt"
-            android:text="МР Групп"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/company"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="5pt"
+        android:text="МР Групп"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/OrganizationAccount"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="2"
-            android:labelFor="@+id/contragent"
-            android:text="Получатель:"
-            android:textSize="10sp" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/contragent"
+        android:text="Получатель:"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/contragent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="3"
-            android:paddingStart="5pt"
-            android:text="Бизнес Парк Савеловский"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/contragent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="5pt"
+        android:text="Бизнес Парк Савеловский"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/contract"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="0"
-            android:text="р/счет:"
-            android:textSize="10sp" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="р/счет:"
+        android:textSize="10sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/OrganizationAccount" />
 
-        <TextView
-            android:id="@+id/OrganizationAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="1"
-            android:labelFor="@id/OrganizationAccount"
-            android:paddingStart="5pt"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/OrganizationAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/OrganizationAccount"
+        android:paddingStart="5pt"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/textView10" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="2"
-            android:labelFor="@id/contract"
-            android:text="Договор:"
-            android:textSize="10sp" />
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/contract"
+        android:text="Договор:"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@+id/company"
+        app:layout_constraintStart_toEndOf="@+id/company"
+        app:layout_constraintEnd_toEndOf="@+id/contract" />
 
-        <TextView
-            android:id="@+id/contract"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="3"
-            android:paddingStart="5pt"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/contract"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="5pt"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
 
-    </GridLayout>
+</android.support.constraint.ConstraintLayout>
